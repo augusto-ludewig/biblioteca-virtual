@@ -1,5 +1,7 @@
 package model.entities;
 
+// Essa classe representa um livro
+
 public class Livro {
 	
 	private String titulo;
@@ -36,9 +38,12 @@ public class Livro {
 		this.anoPublicacao = anoPublicacao;
 	}
 	
+	// retorna os dados do livro em uma String
 	@Override
 	public String toString() {
-		return "Livro [titulo=" + titulo + ", autor=" + autor + ", anoPublicacao=" + anoPublicacao + "]";
+		return "Livro [titulo=" + titulo
+				+ ", autor=" + autor 
+				+ ", anoPublicacao=" + anoPublicacao + "]";
 	}
 	
 	
