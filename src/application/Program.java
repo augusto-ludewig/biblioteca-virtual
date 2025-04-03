@@ -2,8 +2,8 @@ package application;
 
 import java.util.Scanner;
 
+import model.entities.ListaLivros;
 import model.entities.Livro;
-import model.entities.listaLivros;
 
 public class Program {
 
@@ -29,7 +29,7 @@ public class Program {
 		
 		if(lista == 's') {
 			
-			listaLivros listaLivros = new listaLivros();
+			ListaLivros listaLivros = new ListaLivros();
 			listaLivros.adicionarLivro(livro);
 			listaLivros.listarLivros();
 			

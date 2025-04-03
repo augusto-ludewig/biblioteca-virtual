@@ -2,22 +2,27 @@ package model.entities;
 
 import java.util.LinkedList;
 
-public class listaLivros {
+// Representa uma lista de livro
+
+public class ListaLivros {
 	
-	public LinkedList<Livro> listaLivros;
-	
-	public listaLivros() {
+	private LinkedList<Livro> listaLivros;
+
+	public ListaLivros() {
 		this.listaLivros = new LinkedList<Livro>();
 	}
-	
-	public void adicionarLivro(Livro livro) {
+
+	// Adiciona um livro à lista
+	public void adicionarLivro(final Livro livro) {
 		listaLivros.add(livro);
 	}
-	
-	public void removerLivro(Livro livro) {
+
+	// Remove um livro da lista
+	public void removerLivro(final Livro livro) {
 		listaLivros.remove(livro);
 	}
-	
+
+	// Lista todos os livros
 	public void listarLivros() {
 		for (Livro elemento : listaLivros) {
 			 System.out.println(elemento);
