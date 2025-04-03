@@ -4,7 +4,7 @@ name: Continuous Integration - Super-Linter
 on: # yamllint disable-line rule:truthy
   pull_request:
     branches:
-      - main
+      - desenvolvimento
   push: null
 
 permissions: {}
