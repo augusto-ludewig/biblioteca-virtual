@@ -18,7 +18,7 @@ public final class ListaLivros {
 
   /**
    * Adiciona um livro à lista.
-   * 
+   *
    * @param livro Livro a ser adicionado (não pode ser nulo)
    * @throws IllegalArgumentException Se o livro for nulo
    */
@@ -31,7 +31,7 @@ public final class ListaLivros {
 
   /**
    * Remove um livro da lista.
-   * 
+   *
    * @param livro Livro a ser removido (não pode ser nulo)
    */
   public void removerLivro(final Livro livro) {

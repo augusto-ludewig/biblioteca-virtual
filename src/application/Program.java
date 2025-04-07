@@ -5,11 +5,11 @@ import model.entities.ListaLivros;
 import model.entities.Livro;
 
 public final class Program {
-  private Program() {}; // Construtor privado
+  private Program() {} // Construtor privado
 
   /**
    * Método principal de execução.
-   * 
+   *
    * @param args Argumentos da linha de comando
    */
   public static void main(final String[] args) {
@@ -17,10 +17,13 @@ public final class Program {
 
     System.out.println("Olá! Seja bem vindo(a) à sua Biblioteca Virtual!");
     System.out.println("Primeiramente vamos criar um livro.");
+
     System.out.print("Digite o nome do livro: ");
     String nomeLivro = sc.nextLine();
+
     System.out.print("Digite o nome do autor: ");
     String autorLivro = sc.nextLine();
+
     System.out.print("Digite o ano de publicação: ");
     Integer anoPublicacao = sc.nextInt();
 
@@ -32,11 +35,9 @@ public final class Program {
     char lista = input.charAt(0);
 
     if (lista == 's') {
-
       ListaLivros listaLivros = new ListaLivros();
       listaLivros.adicionarLivro(livro);
       listaLivros.listarLivros();
-
     } else if (lista == 'n') {
       System.out.println("O livro não foi adicionado à lista.");
     } else {

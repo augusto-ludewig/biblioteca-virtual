@@ -25,7 +25,7 @@ public final class Livro {
 
   /**
    * Define o título do livro.
-   * 
+   *
    * @param novoTitulo Novo título
    */
   public void setTitulo(final String novoTitulo) {
@@ -34,7 +34,7 @@ public final class Livro {
 
   /**
    * Define o autor do livro.
-   * 
+   *
    * @param novoAutor Novo autor
    */
   public void setAutor(final String novoAutor) {
@@ -43,7 +43,7 @@ public final class Livro {
 
   /**
    * Define o ano de publicação do livro.
-   * 
+   *
    * @param novoAnoPublicacao Novo ano de publicação
    */
   public void setAnoPublicacao(final Integer novoAnoPublicacao) {
@@ -52,7 +52,7 @@ public final class Livro {
 
   /**
    * Retorna os dados do livro em formato de string.
-   * 
+   *
    * @return String formatada com os dados do livro
    */
   @Override
