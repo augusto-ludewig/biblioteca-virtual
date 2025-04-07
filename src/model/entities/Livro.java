@@ -19,11 +19,11 @@ public final class Livro {
    */
   public Livro(final String novoTitulo, final String novoAutor,
       final Integer novoAnoPublicacao) {
-    // @param novo título
+    // @param String novoTitulo
     this.titulo = novoTitulo;
-    // @param novo autor
+    // @param String novoAutor
     this.autor = novoAutor;
-    // @param ano de publicação
+    // @param Integer novoAnoPublicacao
     this.anoPublicacao = novoAnoPublicacao;
   }
 
