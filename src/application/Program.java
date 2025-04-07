@@ -5,7 +5,7 @@ import model.entities.ListaLivros;
 import model.entities.Livro;
 
 public final class Program {
-  private Program() {} // Construtor privado
+  private Program(){} // Construtor privado
 
   /**
    * Método principal de execução.

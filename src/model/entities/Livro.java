@@ -60,7 +60,6 @@ public final class Livro {
    * @return String formatada com os dados do livro
    */
   @Override
-  @Override
   public String toString() {
     return "Livro [titulo=" + titulo
             + ", autor=" + autor
