@@ -13,7 +13,6 @@ public final class Livro {
   /** Ano de publicação. */
   private Integer anoPublicacao;
 
-  
   /**
    * Construtor do livro.
    *
