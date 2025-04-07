@@ -1,8 +1,6 @@
 package model.entities;
 
-/**
- * Classe que representa um livro.
- */
+/** Classe que representa um livro. */
 public final class Livro {
   /** Título do livro. */
   private String titulo;
@@ -20,8 +18,7 @@ public final class Livro {
    * @param novoAutor Autor do livro (não pode ser nulo)
    * @param novoAnoPublicacao Ano de publicação (deve ser um valor válido)
    */
-  public Livro(final String novoTitulo, final String novoAutor,
-      final Integer novoAnoPublicacao) {
+  public Livro(final String novoTitulo, final String novoAutor, final Integer novoAnoPublicacao) {
     this.titulo = novoTitulo;
     this.autor = novoAutor;
     this.anoPublicacao = novoAnoPublicacao;
@@ -61,7 +58,12 @@ public final class Livro {
    */
   @Override
   public String toString() {
-    return "Livro [titulo=" + titulo + ", autor=" + autor + ", anoPublicacao="
-        + anoPublicacao + "]";
+    return "Livro [titulo="
+        + titulo
+        + ", autor="
+        + autor
+        + ", anoPublicacao="
+        + anoPublicacao
+        + "]";
   }
 }
