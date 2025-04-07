@@ -16,14 +16,15 @@ public final class Livro {
 
   /**
    * Construtor do livro.
+   *
+   * @param novoTitulo Título do livro (não pode ser nulo)
+   * @param novoAutor Autor do livro (não pode ser nulo)
+   * @param novoAnoPublicacao Ano de publicação (deve ser um valor válido)
    */
   public Livro(final String novoTitulo, final String novoAutor,
       final Integer novoAnoPublicacao) {
-    // @param String novoTitulo
     this.titulo = novoTitulo;
-    // @param String novoAutor
     this.autor = novoAutor;
-    // @param Integer novoAnoPublicacao
     this.anoPublicacao = novoAnoPublicacao;
   }
 
