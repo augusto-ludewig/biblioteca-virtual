@@ -5,9 +5,7 @@ import model.entities.ListaLivros;
 import model.entities.Livro;
 
 public final class Program {
-  private Program() {
-    
-  } // Construtor privado
+  private Program() {} // Construtor privado
 
   /**
    * Método principal de execução.
@@ -45,7 +43,6 @@ public final class Program {
     } else {
       System.out.println("Valor inválido! O livro não foi adicionado à lista.");
     }
-
     sc.close();
   }
 }
