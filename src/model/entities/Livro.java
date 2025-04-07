@@ -1,40 +1,65 @@
 package model.entities;
 
-// Essa classe representa um livro
+// Classe que representa um livro com título, autor e ano de publicação.
 
-public class Livro {
+public final class Livro {
 
   private String titulo;
   private String autor;
   private Integer anoPublicacao;
 
-  public Livro(String titulo, String autor, Integer anoPublicacao) {
+  /**
+   * Construtor do livro.
+   * 
+   * @param novoTitulo Título do livro
+   * @param novoAutor Autor do livro
+   * @param novoAnoPublicacao Ano de publicação
+   */
+
+  public Livro(final String titulo, final String autor, final Integer anoPublicacao) {
     this.titulo = titulo;
     this.autor = autor;
     this.anoPublicacao = anoPublicacao;
   }
 
+
+  /**
+   * Retorna o título do livro.
+   * 
+   * @return Título atual do livro
+   */
   public String getTitulo() {
     return titulo;
   }
 
-  public void setTitulo(String titulo) {
+
+  public void setTitulo(final String titulo) {
     this.titulo = titulo;
   }
 
+  /**
+   * Retorna o autor do livro.
+   * 
+   * @return autor atual do livro
+   */
   public String getAutor() {
     return autor;
   }
 
-  public void setAutor(String autor) {
+  public void setAutor(final String autor) {
     this.autor = autor;
   }
 
+  /**
+   * Retorna o ano de publicação do livro.
+   * 
+   * @return ano de publicação do livro
+   */
   public Integer getAnoPublicacao() {
     return anoPublicacao;
   }
 
-  public void setAnoPublicacao(Integer anoPublicacao) {
+  public void setAnoPublicacao(final Integer anoPublicacao) {
     this.anoPublicacao = anoPublicacao;
   }
 

@@ -4,8 +4,14 @@ import java.util.Scanner;
 import model.entities.ListaLivros;
 import model.entities.Livro;
 
-public class Program {
+public final class Program {
+  private Program() {}; // Construtor privado
 
+  /**
+   * Método principal de execução.
+   * 
+   * @param args Argumentos da linha de comando
+   */
   public static void main(String[] args) {
 
     Scanner sc = new Scanner(System.in);

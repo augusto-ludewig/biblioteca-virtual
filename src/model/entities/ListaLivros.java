@@ -5,28 +5,36 @@ import java.util.LinkedList;
 // Representa uma lista de livro
 
 public class ListaLivros {
-	
-	private LinkedList<Livro> listaLivros;
 
-	public ListaLivros() {
-		this.listaLivros = new LinkedList<Livro>();
-	}
+  private final LinkedList<Livro> listaLivros;
 
-	// Adiciona um livro à lista
-	public void adicionarLivro(final Livro livro) {
-		listaLivros.add(livro);
-	}
+  public ListaLivros() {
+    this.listaLivros = new LinkedList<Livro>();
+  }
 
-	// Remove um livro da lista
-	public void removerLivro(final Livro livro) {
-		listaLivros.remove(livro);
-	}
+  /**
+   * Adiciona um livro à lista.
+   * 
+   * @param livro Livro a ser adicionado (não pode ser nulo)
+   * @throws IllegalArgumentException Se o livro for nulo
+   */
+  public final void adicionarLivro(final Livro livro) { // Final e parâmetro final
+    if (livro == null) {
+      throw new IllegalArgumentException("Livro não pode ser nulo");
+    }
+    this.listaLivros.add(livro);
+  }
 
-	// Lista todos os livros
-	public void listarLivros() {
-		for (Livro elemento : listaLivros) {
-			 System.out.println(elemento);
-			}
-	}
+  // Remove um livro da lista
+  public void removerLivro(final Livro livro) {
+    listaLivros.remove(livro);
+  }
+
+  // Lista todos os livros
+  public void listarLivros() {
+    for (Livro elemento : listaLivros) {
+      System.out.println(elemento);
+    }
+  }
 
 }
