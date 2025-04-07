@@ -2,12 +2,16 @@ package model.entities;
 
 import java.util.LinkedList;
 
-// Representa uma lista de livro
-
+/**
+ * Representa uma lista de livros.
+ */
 public final class ListaLivros {
-
+  /** Lista de livros. */
   private final LinkedList<Livro> listaLivros;
 
+  /**
+   * Construtor da lista.
+   */
   public ListaLivros() {
     this.listaLivros = new LinkedList<Livro>();
   }

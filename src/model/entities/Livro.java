@@ -1,20 +1,21 @@
 package model.entities;
 
 /**
- * Classe que representa um livro com título, autor e ano de publicação.
+ * Classe que representa um livro.
  */
 public final class Livro {
-
+  /** Título do livro. */
   private String titulo;
+
+  /** Autor do livro. */
   private String autor;
+
+  /** Ano de publicação. */
   private Integer anoPublicacao;
+
 
   /**
    * Construtor do livro.
-   * 
-   * @param novoTitulo Título do livro
-   * @param novoAutor Autor do livro
-   * @param novoAnoPublicacao Ano de publicação
    */
   public Livro(final String novoTitulo, final String novoAutor, final Integer novoAnoPublicacao) {
     this.titulo = novoTitulo;

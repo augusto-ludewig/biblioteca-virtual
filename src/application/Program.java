@@ -12,8 +12,7 @@ public final class Program {
    * 
    * @param args Argumentos da linha de comando
    */
-  public static void main(String[] args) {
-
+  public static void main(final String[] args) {
     Scanner sc = new Scanner(System.in);
 
     System.out.println("Olá! Seja bem vindo(a) à sua Biblioteca Virtual!");
@@ -43,7 +42,7 @@ public final class Program {
     } else {
       System.out.println("Valor inválido! O livro não foi adicionado à lista.");
     }
-    
+
     sc.close();
   }
 }
