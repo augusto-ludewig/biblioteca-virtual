@@ -22,7 +22,7 @@ public final class ListaLivros {
    * @param livro Livro a ser adicionado (não pode ser nulo)
    * @throws IllegalArgumentException Se o livro for nulo
    */
-  public final void adicionarLivro(final Livro livro) { // Final e parâmetro final
+  public void adicionarLivro(final Livro livro) {
     if (livro == null) {
       throw new IllegalArgumentException("Livro não pode ser nulo");
     }

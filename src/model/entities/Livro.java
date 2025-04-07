@@ -17,9 +17,13 @@ public final class Livro {
   /**
    * Construtor do livro.
    */
-  public Livro(final String novoTitulo, final String novoAutor, final Integer novoAnoPublicacao) {
+  public Livro(final String novoTitulo, final String novoAutor,
+      final Integer novoAnoPublicacao) {
+    // @param novo título
     this.titulo = novoTitulo;
+    // @param novo autor
     this.autor = novoAutor;
+    // @param ano de publicação
     this.anoPublicacao = novoAnoPublicacao;
   }
 
@@ -57,7 +61,7 @@ public final class Livro {
    */
   @Override
   public String toString() {
-    return "Livro [titulo=" + titulo + ", autor=" + autor + ", anoPublicacao=" + anoPublicacao
-        + "]";
+    return "Livro [titulo=" + titulo + ", autor=" + autor + ", anoPublicacao="
+        + anoPublicacao + "]";
   }
 }
