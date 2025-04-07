@@ -43,10 +43,7 @@ public final class Program {
     } else {
       System.out.println("Valor inválido! O livro não foi adicionado à lista.");
     }
-
+    
     sc.close();
-
-
   }
-
 }

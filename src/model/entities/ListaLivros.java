@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 // Representa uma lista de livro
 
-public class ListaLivros {
+public final class ListaLivros {
 
   private final LinkedList<Livro> listaLivros;
 
@@ -25,12 +25,18 @@ public class ListaLivros {
     this.listaLivros.add(livro);
   }
 
-  // Remove um livro da lista
+  /**
+   * Remove um livro da lista.
+   * 
+   * @param livro Livro a ser removido (não pode ser nulo)
+   */
   public void removerLivro(final Livro livro) {
     listaLivros.remove(livro);
   }
 
-  // Lista todos os livros
+  /**
+   * Exibe todos os livros da lista.
+   */
   public void listarLivros() {
     for (Livro elemento : listaLivros) {
       System.out.println(elemento);
