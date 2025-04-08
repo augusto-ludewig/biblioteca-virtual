@@ -1,46 +1,69 @@
 package model.entities;
 
-public class Livro {
-	
-	private String titulo;
-	private String autor;
-	private Integer anoPublicacao;
-	
-	public Livro(String titulo, String autor, Integer anoPublicacao) {
-		this.titulo = titulo;
-		this.autor = autor;
-		this.anoPublicacao = anoPublicacao;
-	}
+/** Classe que representa um livro. */
+public final class Livro {
+  /** Título do livro. */
+  private String titulo;
 
-	public String getTitulo() {
-		return titulo;
-	}
+  /** Autor do livro. */
+  private String autor;
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+  /** Ano de publicação. */
+  private Integer anoPublicacao;
 
-	public String getAutor() {
-		return autor;
-	}
+  /**
+   * Construtor do livro.
+   *
+   * @param novoTitulo Título do livro (não pode ser nulo)
+   * @param novoAutor Autor do livro (não pode ser nulo)
+   * @param novoAnoPublicacao Ano de publicação (deve ser um valor válido)
+   */
+  public Livro(
+        final String novoTitulo, // 4 espaços de indentação
+        final String novoAutor,
+        final Integer novoAnoPublicacao) {
+    this.titulo = novoTitulo;
+    this.autor = novoAutor;
+    this.anoPublicacao = novoAnoPublicacao;
+  }
 
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
+  /**
+   * Define o título do livro.
+   *
+   * @param novoTitulo Novo título
+   */
+  public void setTitulo(final String novoTitulo) {
+    this.titulo = novoTitulo;
+  }
 
-	public Integer getAnoPublicacao() {
-		return anoPublicacao;
-	}
+  /**
+   * Define o autor do livro.
+   *
+   * @param novoAutor Novo autor
+   */
+  public void setAutor(final String novoAutor) {
+    this.autor = novoAutor;
+  }
 
-	public void setAnoPublicacao(Integer anoPublicacao) {
-		this.anoPublicacao = anoPublicacao;
-	}
-	
-	@Override
-	public String toString() {
-		return "Livro [titulo=" + titulo + ", autor=" + autor + ", anoPublicacao=" + anoPublicacao + "]";
-	}
-	
-	
+  /**
+   * Define o ano de publicação do livro.
+   *
+   * @param novoAnoPublicacao Novo ano de publicação
+   */
+  public void setAnoPublicacao(final Integer novoAnoPublicacao) {
+    this.anoPublicacao = novoAnoPublicacao;
+  }
 
+  /**
+   * Retorna os dados do livro em formato de string.
+   *
+   * @return String formatada com os dados do livro
+   */
+  @Override
+  public String toString() {
+    return "Livro [titulo=" + titulo
+        + ", autor=" + autor
+        + ", anoPublicacao=" + anoPublicacao
+        + "]";
+  }
 }
