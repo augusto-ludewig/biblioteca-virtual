@@ -17,6 +17,9 @@ jobs:
       contents: read
       packages: read
       statuses: write # Para reportar status checks do GitHub Actions
+    env:
+      VALIDATE_JAVA_GOOGLE_FORMAT: false  # Google Java Format desativado
+      VALIDATE_JAVA: true  # Mantém outros linters de Java (se necessário)
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
@@ -24,7 +27,6 @@ jobs:
           fetch-depth: 0 # Histórico completo para o Super-Linter
 
       - name: Super-linter
-        uses: super-linter/super-linter@v7.3.0
+        uses: super-linter/super-linter@v5
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          VALIDATE_JAVA_GOOGLE_FORMAT: false # Desativa o Google Java Format
