@@ -21,6 +21,6 @@ jobs:
         with:
           name: projeto.zip
           path: |
-            '**.java'
+            src/
             README.md
 
