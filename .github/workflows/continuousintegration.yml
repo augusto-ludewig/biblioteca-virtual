@@ -4,8 +4,8 @@ name: Continuous Integration - Super-Linter
 on:
   pull_request:
     branches:
-      - desenvolvimento
-  push: {}
+      - main
+  push: {} #faz em todos os repositórios
 
 permissions: {}
 
