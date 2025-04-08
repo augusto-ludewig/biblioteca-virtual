@@ -17,8 +17,6 @@ jobs:
       contents: read
       packages: read
       statuses: write # Para reportar status checks do GitHub Actions
-    env:
-      VALIDATE_JAVA_GOOGLE_FORMAT: false # Desativa o Google Java Format
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
@@ -29,3 +27,4 @@ jobs:
         uses: super-linter/super-linter@v7.3.0
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          VALIDATE_JAVA_GOOGLE_FORMAT: false # Desativa o Google Java Format
