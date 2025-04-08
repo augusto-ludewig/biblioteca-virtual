@@ -13,13 +13,12 @@ jobs:
   build:
     name: Lint
     runs-on: ubuntu-latest
-    env:
-      VALIDATE_JAVA_GOOGLE_FORMAT: false # Desativa o Google Java Format
     permissions:
       contents: read
       packages: read
       statuses: write # Para reportar status checks do GitHub Actions
-
+    env:
+      VALIDATE_JAVA_GOOGLE_FORMAT: false # Desativa o Google Java Format
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
