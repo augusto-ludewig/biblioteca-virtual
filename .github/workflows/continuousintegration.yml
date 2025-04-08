@@ -1,7 +1,7 @@
 ---
 name: Continuous Integration - Super-Linter
 
-on: # yamllint disable-line rule:truthy
+on:
   pull_request:
     branches:
       - desenvolvimento
@@ -16,10 +16,10 @@ jobs:
     permissions:
       contents: read
       packages: read
-      statuses: write # Para reportar status checks do GitHub Actions
+      statuses: write
     env:
       VALIDATE_JAVA_GOOGLE_FORMAT: false  # Google Java Format desativado
-      VALIDATE_JAVA: true  # Mantém outros linters de Java (se necessário)
+      VALIDATE_JAVA: true  # Mantém outros linters de Java
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
