@@ -1,13 +1,13 @@
 package application;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Scanner;
 import model.entities.ListaLivros;
 import model.entities.Livro;
 
 public final class Program {
-  private Program() {
-
-  } // Construtor privado
+  private Program() {} // Construtor privado
 
   /**
    * Método principal de execução.
@@ -18,7 +18,15 @@ public final class Program {
     Scanner sc = new Scanner(System.in);
 
     System.out.println("Olá! Seja bem vindo(a) à sua Biblioteca Virtual!");
-    System.out.println("Primeiramente vamos criar um livro.");
+
+    System.out.println("Selecione a opção: ");
+    System.out.println("a) Adicionar um livro");
+    System.out.println("b) Listar livros disponíveis");
+    System.out.println("c) Lista de desejos");
+    System.out.println("d) Adicionar um livro\n");
+
+    System.out.print("Seleção: ");
+    char selecao = sc.nextLine().charAt(0);
 
     System.out.print("Digite o nome do livro: ");
     String nomeLivro = sc.nextLine();
@@ -27,24 +35,42 @@ public final class Program {
     String autorLivro = sc.nextLine();
 
     System.out.print("Digite o ano de publicação: ");
-    Integer anoPublicacao = sc.nextInt();
+    int anoPublicacao = sc.nextInt();
 
-    Livro livro = new Livro(nomeLivro, autorLivro, anoPublicacao);
+    System.out.print("Digite a quantidade disponível em estoque: ");
+    int disponibilidade = sc.nextInt();
+    sc = new Scanner(System.in);
 
-    System.out.print("Deseja adicioná-lo na lista de desejos? (s/n): ");
-    String input = sc.next();
+    Livro livro = new Livro(nomeLivro, autorLivro, anoPublicacao, disponibilidade);
+    Queue<Livro> filaEspera = new PriorityQueue<>();
 
-    char lista = input.charAt(0);
+    if (livro.getDisponibilidade() == 0) {
+      System.out.print("Livro indisponível! Deseja entrar na fila de espera? (s/n) ");
+      char input = sc.nextLine().charAt(0);
+      if(input == 's'){
+        filaEspera.add(livro);
+        filaEspera.add(new Livro("Jason Momoa", "Carlos", 1982, 0));
+        filaEspera.add(new Livro("Jason Momoa", "Carlos", 1982, 0));
+        System.out.println("Você foi adicionado à lista de espera!");
+      } else {
+        System.out.print("Deseja adicioná-lo ao carrinho? (s/n): ");
+        char carrinho = sc.nextLine().charAt(0);
 
-    if (lista == 's') {
-      ListaLivros listaLivros = new ListaLivros();
-      listaLivros.adicionarLivro(livro);
-      listaLivros.listarLivros();
-    } else if (lista == 'n') {
-      System.out.println("O livro não foi adicionado à lista.");
-    } else {
-      System.out.println("Valor inválido! O livro não foi adicionado à lista.");
+        if (carrinho == 's') {
+          ListaLivros listaLivros = new ListaLivros();
+          listaLivros.adicionarLivro(livro);
+          listaLivros.listarLivros();
+        } else if (carrinho == 'n') {
+          System.out.println("O livro não foi adicionado à lista.");
+        } else {
+          System.out.println("Valor inválido! O livro não foi adicionado à lista.");
+        }
+      }
     }
+
+    System.out.println("Lista de espera: ");
+    System.out.println(filaEspera.toString());
+
     sc.close();
   }
 }
