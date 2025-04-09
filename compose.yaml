@@ -1,0 +1,7 @@
+services:
+  server:
+    build: .
+    environment:
+      - MAIN_CLASS=application.Program  # Classe principal completa
+    ports:
+      - "8080:8080"
