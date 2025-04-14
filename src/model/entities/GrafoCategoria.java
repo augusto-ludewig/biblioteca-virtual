@@ -1,49 +1,51 @@
 package model.entities;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
-// Esse grafo faz o relacionamento dos livros através das suas categorias
 public class GrafoCategoria {
-    private ArrayList<Livro> nodes;
-    private ArrayList<LinkedList<Livro>> conexoes;
+    // Estrutura do grafo: Mapa de Livro para seus vizinhos (recomendações)
+    private final Map<Livro, Set<Livro>> grafo;
 
-    public GrafoCategoria(){
-        nodes = new ArrayList<>();
-        conexoes = new ArrayList<>();
+    public GrafoCategoria() {
+        this.grafo = new HashMap<>();
     }
 
-    public void adicionarNode(Livro nomeNode){
-        nodes.add(nomeNode);
-        conexoes.add(new LinkedList<>());
-    }
+    // Adiciona um livro ao grafo e conecta automaticamente por gênero
+    public void adicionarNode(Livro livro) {
+        if (!grafo.containsKey(livro)) {
+            grafo.put(livro, new HashSet<>());
 
-    public void adicionarConexao(Livro origem, Livro destino){
-        int indiceNodeOrigem = nodes.lastIndexOf(origem);
-        int indiceNodeDestino = nodes.lastIndexOf(destino);
-
-        if(indiceNodeOrigem != -1 && indiceNodeDestino != -1){
-            conexoes.get(indiceNodeOrigem).add(destino);
-            conexoes.get(indiceNodeDestino).add(origem);
-        }
-
-    }
-
-    public void mostrarConexoes(){
-        // Aqui mostramos as conexões
-        for (int i =0; i < nodes.size(); i++){
-            System.out.println("O livro chamado " + nodes.get(i).getTitulo() + " tem conexões com: ");
-
-            LinkedList<Livro> conexoesNodeAtual = conexoes.get(i);
-
-            // Aqui mostramos as conexões de cada nó
-            for (int j = 0; j < conexoesNodeAtual.size(); j++){
-                System.out.print(j+1 + ". " + conexoesNodeAtual.get(j).getTitulo());
-
-                System.out.println();
-
+            // Conecta com livros do mesmo gênero
+            for (Livro existente : grafo.keySet()) {
+                if (existente.getGeneroLiterario().equalsIgnoreCase(livro.getGeneroLiterario())) {
+                    adicionarConexao(existente, livro);
+                }
             }
-
         }
+    }
+
+    // Cria conexão bidirecional entre dois livros
+    public void adicionarConexao(Livro livro1, Livro livro2) {
+        grafo.get(livro1).add(livro2);
+        grafo.get(livro2).add(livro1);
+    }
+
+    // Mostra todas as conexões do grafo
+    public void mostrarConexoes() {
+        for (Map.Entry<Livro, Set<Livro>> entry : grafo.entrySet()) {
+            System.out.println("\nLivro: " + entry.getKey().getTitulo());
+            System.out.println("Recomendações (" + entry.getValue().size() + "):");
+            for (Livro recomendacao : entry.getValue()) {
+                System.out.println("  ▸ " + recomendacao.getTitulo() + " (" + recomendacao.getGeneroLiterario() + ")");
+            }
+        }
+    }
+
+    // Método para obter recomendações baseadas no gênero
+    public Set<Livro> getRecomendacoes(Livro livro) {
+        return grafo.getOrDefault(livro, new HashSet<>());
     }
 }

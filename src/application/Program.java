@@ -23,6 +23,11 @@ public final class Program {
     Biblioteca biblioteca = new Biblioteca();
     new Livro().criarLivros(biblioteca);
 
+    // Adicionar todos os livros da biblioteca ao grafo
+    for (Livro livro : biblioteca.getListaDeLivros()) {
+      grafo.adicionarNode(livro);
+    }
+
     System.out.println("Olá! Seja bem vindo(a) à sua Biblioteca Virtual!");
 
     char selecao = 0;
@@ -53,8 +58,15 @@ public final class Program {
         System.out.print("\nDigite o indice do livro desejado: ");
         int indice = sc.nextInt()-1;
 
+        Livro livroSelecionado = biblioteca.consultarLivro(indice);
+
         System.out.println("\n" + biblioteca.consultarLivro(indice).toStringDetalhado());
-        histricoConsultaLivros.add(biblioteca.consultarLivro(indice));
+        histricoConsultaLivros.add(livroSelecionado);
+
+        // Faz recomendações de livros com base no gênero literário do livro
+        Set<Livro> recomendacoes = grafo.getRecomendacoes(livroSelecionado);
+        System.out.println("\nOutras recomendações para " + livroSelecionado.getTitulo() + ":");
+        recomendacoes.forEach(l -> System.out.println(" ▸ " + l.getTitulo()));
       }
 
       else if (selecao == 'c') {
