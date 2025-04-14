@@ -90,7 +90,7 @@ public final class Livro implements Comparable<Livro> {
   }
 
   public List<Exemplar> consultarExemplares() {
-    return exemplares.stream().collect(Collectors.toList());
+    return new ArrayList<>(exemplares);
   }
 
   public List<Exemplar> getExemplaresDisponiveis() {
@@ -115,7 +115,7 @@ public final class Livro implements Comparable<Livro> {
             + ", autor:" + autor
             + ", gênero:" + generoLiterario
             + ", publicação: " + anoPublicacao
-            + ", exemplares: " + exemplares;
+            + ", exemplares: \n" + exemplares;
   }
 
   @Override
@@ -124,23 +124,31 @@ public final class Livro implements Comparable<Livro> {
   }
 
   //Para facilitar a simulação e o código principal ficar clean, esse método cria 10 livros
-  public static void criarLivros(Biblioteca b){
+  public void criarLivros(Biblioteca biblioteca){
 
     // Livros de Aventura
-    b.adicionarLivro(new Livro("Harry Potter e o Cálice de Fogo", "J. K. Rowling", "Aventura", 2000, 1));
-    b.adicionarLivro(new Livro("Jogos Vorazes", "Suzanne Collins", "Aventura", 2008, 2));
-    b.adicionarLivro(new Livro("Maze Runner - Correr ou Morrer", "James Dashner", "Aventura", 2009, 3));
+    biblioteca.adicionarLivro(new Livro("Harry Potter e o Cálice de Fogo", "J. K. Rowling", "Aventura", 2000, 1));
+    biblioteca.adicionarLivro(new Livro("Jogos Vorazes", "Suzanne Collins", "Aventura", 2008, 2));
+    biblioteca.adicionarLivro(new Livro("Maze Runner - Correr ou Morrer", "James Dashner", "Aventura", 2009, 3));
 
     // Livros de Programação
-    b.adicionarLivro(new Livro("Clean Code: A Handbook of Agile Software Craftsmanship", "Robert C. Martin", "Programação", 2008, 1));
-    b.adicionarLivro(new Livro("Código Limpo: Habilidades Práticas do Agile Software", "Robert C. Martin", "Programação", 2009, 1));
-    b.adicionarLivro(new Livro("Algoritmos: Teoria e Prática", "Thomas H. Cormen", "Programação", 1990, 2));
-    b.adicionarLivro(new Livro("Effective Java", "Joshua Bloch", "Programação", 2001, 1));
-    b.adicionarLivro(new Livro("Introdução à Programação com Python", "Nilo Ney Coutinho Menezes", "Programação", 2019, 1));
+    biblioteca.adicionarLivro(new Livro("Clean Code: A Handbook of Agile Software Craftsmanship", "Robert C. Martin", "Programação", 2008, 1));
+    biblioteca.adicionarLivro(new Livro("Código Limpo: Habilidades Práticas do Agile Software", "Robert C. Martin", "Programação", 2009, 1));
+    biblioteca.adicionarLivro(new Livro("Algoritmos: Teoria e Prática", "Thomas H. Cormen", "Programação", 1990, 2));
+    biblioteca.adicionarLivro(new Livro("Effective Java", "Joshua Bloch", "Programação", 2001, 1));
+    biblioteca.adicionarLivro(new Livro("Introdução à Programação com Python", "Nilo Ney Coutinho Menezes", "Programação", 2019, 1));
 
     // Livros de Matemática/Ciência
-    b.adicionarLivro(new Livro("O Homem que Calculava", "Malba Tahan", "Matemática", 1949, 1));
-    b.adicionarLivro(new Livro("O Andar do Bêbado: Como o Acaso Determina Nossas Vidas", "Leonard Mlodinow", "Ciência", 2008, 1));
+    biblioteca.adicionarLivro(new Livro("O Homem que Calculava", "Malba Tahan", "Matemática", 1949, 1));
+    biblioteca.adicionarLivro(new Livro("O Andar do Bêbado: Como o Acaso Determina Nossas Vidas", "Leonard Mlodinow", "Ciência", 2008, 1));
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Livro livro = (Livro) o;
+    return titulo.equalsIgnoreCase(livro.titulo);
   }
 
 

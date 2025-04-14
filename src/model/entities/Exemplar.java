@@ -1,5 +1,8 @@
 package model.entities;
 
+import java.util.HashMap;
+import java.util.Locale;
+
 public class Exemplar {
     private String id; // Identificador único (pode ser gerado automaticamente)
     private Livro livro; // Referência ao livro original
@@ -12,8 +15,11 @@ public class Exemplar {
     }
 
     private String gerarIdUnico() {
-        // Exemplo: Combinação do nome do livro + número sequencial
-        return livro.getTitulo() + "-" + (livro.getExemplaresDisponiveis().size() + 1);
+        // Combinação do primeiro nome do livro + número sequencial
+        String x = livro.getTitulo().toLowerCase(Locale.ROOT);
+        int inicio = x.indexOf(0);
+        int fim = x.indexOf(" ");
+        return x.substring(inicio + 1, fim) + livro.consultarExemplares().size() + 1;
     }
 
     // Getters e setters
@@ -25,4 +31,24 @@ public class Exemplar {
         this.status = status;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + " - Status: " + status;
+    }
 }
