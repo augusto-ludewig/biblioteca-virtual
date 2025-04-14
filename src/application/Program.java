@@ -153,15 +153,6 @@ public final class Program {
         System.out.println("- " + l.toString());
       }
 
-    //    grafo.adicionarNode(livro1);
-    //    grafo.adicionarNode(livro2);
-    //    grafo.adicionarNode(livro3);
-    //
-    //    grafo.adicionarConexao(livro1, livro2);
-    //    grafo.adicionarConexao(livro2, livro3);
-    //
-    //    grafo.mostrarConexoes();
-
       sc.close();
 
   }
