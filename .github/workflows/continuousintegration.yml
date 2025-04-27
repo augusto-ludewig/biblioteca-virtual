@@ -1,4 +1,4 @@
-name: Continuous Integration - Super-Linter and WhatsApp
+name: Super-Linter
 
 on:
   pull_request:
@@ -38,7 +38,7 @@ jobs:
       contents: read # Permissão mínima necessária
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Send WhatsApp Notification
         uses: KnosTx/whatsapp-notification-action@v1
