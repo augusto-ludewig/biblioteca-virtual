@@ -1,4 +1,4 @@
-name: Super-Linter
+name: Continuous-Integration
 
 on:
   pull_request:
@@ -30,17 +30,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-  notify-whatsapp: # Job separado
-    name: Notificação WhatsApp
-    runs-on: ubuntu-latest
-    needs: build # Garante execução após o job 'build'
-    permissions:
-      contents: read # Permissão mínima necessária
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  jobs:
+    discord:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
 
-      - name: Send WhatsApp Notification
-        uses: KnosTx/whatsapp-notification-action@v1
-        with:
-          whatsapp_invite_link: "https://chat.whatsapp.com/KUaLF4cxQgrKRuID1eHkKN"
+        - name: Run Discord Webhook
+          uses: johnnyhuy/actions-discord-git-webhook@main
+          with:
+            webhook_url: ${{ secrets.discord_webhook }}
