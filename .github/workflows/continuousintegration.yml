@@ -43,4 +43,4 @@ jobs:
       - name: Send WhatsApp Notification
         uses: KnosTx/whatsapp-notification-action@v1
         with:
-          whatsapp_invite_link: ${{secrets.WHATSAPP_URL}}
+          whatsapp_invite_link: "https://chat.whatsapp.com/KUaLF4cxQgrKRuID1eHkKN"
