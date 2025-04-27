@@ -9,7 +9,7 @@ on:
 permissions: {}
 
 jobs:
-  build:  # Primeiro job
+  lint:
     name: Java-Lint
     runs-on: ubuntu-latest
     permissions:
