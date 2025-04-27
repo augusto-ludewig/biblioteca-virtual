@@ -1,3 +1,4 @@
+---
 name: Continuous-Integration
 
 on:
@@ -29,12 +30,10 @@ jobs:
         uses: super-linter/super-linter@v5
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-  jobs:
     discord:
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v2
+        - uses: actions/checkout@v4
 
         - name: Run Discord Webhook
           uses: johnnyhuy/actions-discord-git-webhook@main
