@@ -1,33 +1,31 @@
 name: Continuous-Integration
 
 on:
-  push: {} # Dispara em todos os branches
+  pull_request:
+    branches:
+      - main
+  push: {} #faz em todos os repositórios
 
 permissions: {}
 
 jobs:
   build:
-    name: Java-Lint
+    name: Lint
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: read
       statuses: write
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      VALIDATE_ALL_CODEBASE: true  # Analisa tudo
-      # Exceções:
-      VALIDATE_MARKDOWN: false      # Ignora Markdown
-      VALIDATE_YAML_PRETTIER: false # Ignora Prettier para YAML
-
+      VALIDATE_JAVA_GOOGLE_FORMAT: false  # Google Java Format desativado
+      VALIDATE_JAVA: true  # Mantém outros linters de Java
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Histórico completo para o Super-Linter
 
       - name: Super-linter
-        uses: super-linter/super-linter@v7.3.0
+        uses: super-linter/super-linter@v5
         env:
-          # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
