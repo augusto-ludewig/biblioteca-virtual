@@ -153,6 +153,4 @@ public final class Livro implements Comparable<Livro> {
         Livro livro = (Livro) o;
         return titulo.equalsIgnoreCase(livro.titulo);
     }
-
-
 }
