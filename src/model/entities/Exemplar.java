@@ -30,7 +30,8 @@ public final class Exemplar {
         String x = livro.getTitulo().toLowerCase(Locale.ROOT);
         int inicio = x.indexOf(0);
         int fim = x.indexOf(" ");
-        return x.substring(inicio + 1, fim) + livro.consultarExemplares().size() + 1;
+        return x.substring(inicio + 1, fim)
+                + livro.consultarExemplares().size() + 1;
     }
 
     /**
@@ -47,8 +48,8 @@ public final class Exemplar {
      *
      * @param status Novo status do exemplar
      */
-    public void setStatus(final Status status) {
-        this.status = status;
+    public void setStatus(final Status newStatus) {
+        this.status = newStatus;
     }
 
     /**
@@ -65,8 +66,8 @@ public final class Exemplar {
      *
      * @param id Novo ID do exemplar
      */
-    public void setId(final String id) {
-        this.id = id;
+    public void setId(final String newId) {
+        this.id = newId;
     }
 
     /**
