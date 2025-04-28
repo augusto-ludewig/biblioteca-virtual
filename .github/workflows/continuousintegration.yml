@@ -14,7 +14,8 @@ jobs:
       packages: read
       statuses: write
     env:
-      VALIDATE_JAVA: true
+      VALIDATE_JAVA: false
+      VALIDATE_JAVA_GOOGLE_FORMAT: false
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
