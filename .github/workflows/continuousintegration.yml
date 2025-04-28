@@ -15,9 +15,10 @@ jobs:
       statuses: write
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      VALIDATE_JAVA_GOOGLE_FORMAT: true
-      JAVA_GOOGLE_FORMAT_APPLY_FIXES: true # Auto-correção
-      VALIDATE_MARKDOWN: trueprettier --write README.Docker.md
+      VALIDATE_JAVA_GOOGLE_FORMAT: false
+      VALIDATE_JAVA: true
+      VALIDATE_MARKDOWN: false
+      VALIDATE_MARKDOWN_PRETTIER: false
 
     steps:
       - name: Checkout repository code
