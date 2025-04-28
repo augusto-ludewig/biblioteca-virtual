@@ -1,12 +1,11 @@
 name: Discord Notification
 
 on:
-  push: { } # Dispara em todos os branches
+  push: {} # Dispara em todos os branches
 
-permissions: { }
+permissions: {}
 
 jobs:
-
   discord:
     name: Discord Notification
     runs-on: ubuntu-latest

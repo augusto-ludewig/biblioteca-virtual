@@ -1,4 +1,6 @@
-### Building and running your application
+# Building and running your application with Docker
+
+[http://localhost:8080](http://localhost:8080)
 
 When you're ready, start your application by running:
 `docker compose up --build`.

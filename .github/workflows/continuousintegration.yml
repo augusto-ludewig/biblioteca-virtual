@@ -1,9 +1,9 @@
 name: Continuous-Integration
 
 on:
-  push: { } # Dispara em todos os branches
+  push: {} # Dispara em todos os branches
 
-permissions: { }
+permissions: {}
 
 jobs:
   build:
@@ -14,8 +14,11 @@ jobs:
       packages: read
       statuses: write
     env:
-      VALIDATE_JAVA: false
-      VALIDATE_JAVA_GOOGLE_FORMAT: false
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      VALIDATE_JAVA_GOOGLE_FORMAT: true
+      JAVA_GOOGLE_FORMAT_APPLY_FIXES: true # Auto-correção
+      VALIDATE_MARKDOWN: trueprettier --write README.Docker.md
+
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
