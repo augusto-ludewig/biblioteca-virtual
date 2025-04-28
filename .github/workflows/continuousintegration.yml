@@ -15,10 +15,10 @@ jobs:
       statuses: write
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      VALIDATE_JAVA_GOOGLE_FORMAT: false
-      VALIDATE_JAVA: true
-      VALIDATE_MARKDOWN: false
-      VALIDATE_MARKDOWN_PRETTIER: false
+      VALIDATE_ALL_CODEBASE: true  # Analisa tudo
+      # Exceções:
+      VALIDATE_MARKDOWN: false      # Ignora Markdown
+      VALIDATE_YAML_PRETTIER: false # Ignora Prettier para YAML
 
     steps:
       - name: Checkout repository code
