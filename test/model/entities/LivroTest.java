@@ -21,6 +21,7 @@ class LivroTest {
         );
     }
 
+    // CHECKSTYLE:OFF: MagicNumber
     // Testes de Construção e Getters
     @Test
     void testConstrutorComExemplares() {
@@ -118,4 +119,5 @@ class LivroTest {
         livro.setGeneroLiterario("TI");
         assertEquals("TI", livro.getGeneroLiterario());
     }
+    // CHECKSTYLE:ON: MagicNumber
 }

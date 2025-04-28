@@ -19,6 +19,7 @@ jobs:
     env:
       VALIDATE_JAVA_GOOGLE_FORMAT: false  # Google Java Format desativado
       VALIDATE_JAVA: true  # Mantém outros linters de Java
+      JAVA_CHECKSTYLE_CONFIG_FILE: checkstyle.xml
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
