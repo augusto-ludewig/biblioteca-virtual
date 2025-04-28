@@ -106,7 +106,8 @@ public final class Program {
                   + exemplarEmprestado.getId());
         } else {
           sc = new Scanner(System.in);
-          System.out.print("Livro indisponível! Deseja entrar na fila de espera? (s/n) ");
+          System.out.print("Livro indisponível!" +
+                  "Deseja entrar na fila de espera? (s/n) ");
           char input = sc.nextLine().charAt(0);
           if (input == 's') {
             filaEspera.add(livroSelecionado);
@@ -141,7 +142,8 @@ public final class Program {
       System.out.println("\nNotificações da fila de espera:");
       while (!filaEspera.isEmpty()) {
         Livro livro = filaEspera.poll();
-        System.out.println("O livro " + livro.getTitulo() + " está disponível!");
+        System.out.println("O livro " + livro.getTitulo()
+                + " está disponível!");
       }
     }
 

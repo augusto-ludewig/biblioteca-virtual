@@ -49,7 +49,8 @@ public final class Biblioteca {
      */
     public void adicionarListaDeLivros(final List<Livro> livros) {
         if (livros == null) {
-            throw new IllegalArgumentException("A lista de livros não pode ser nula");
+            throw new IllegalArgumentException(
+                    "A lista de livros não pode ser nula");
         }
         for (Livro livro : livros) {
             this.listaDeLivros.add(livro);
@@ -90,7 +91,8 @@ public final class Biblioteca {
      * Obtém os exemplares de um livro pelo título.
      *
      * @param tituloLivro Título do livro a ser pesquisado
-     * @return Lista de exemplares do livro encontrado ou lista vazia se não encontrado
+     * @return Lista de exemplares do livro encontrado
+     * ou lista vazia se não encontrado
      */
     public List<Exemplar> getExemplaresDoLivro(final String tituloLivro) {
         for (Livro livro : listaDeLivros) {

@@ -1,15 +1,12 @@
-name: Continuous Integration - Super-Linter and Discord
+name: Continuous-Integration
 
 on:
-  pull_request:
-    branches:
-      - main
   push: { } # Dispara em todos os branches
 
 permissions: { }
 
 jobs:
-  lint:
+  build:
     name: Java-Lint
     runs-on: ubuntu-latest
     permissions:
