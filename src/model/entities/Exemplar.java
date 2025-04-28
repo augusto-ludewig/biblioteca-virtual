@@ -46,7 +46,7 @@ public final class Exemplar {
     /**
      * Define o status do exemplar.
      *
-     * @param status Novo status do exemplar
+     * @param newStatus  novo status a ser setado no exemplar
      */
     public void setStatus(final Status newStatus) {
         this.status = newStatus;
@@ -64,7 +64,7 @@ public final class Exemplar {
     /**
      * Define o ID único do exemplar.
      *
-     * @param id Novo ID do exemplar
+     * @param newId Novo ID do exemplar
      */
     public void setId(final String newId) {
         this.id = newId;

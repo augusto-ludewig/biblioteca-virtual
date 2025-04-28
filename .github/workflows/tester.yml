@@ -1,22 +1,30 @@
 name: JUnit Test Report
 
 on:
-  pull_request:
-    { }
-  push:
-    { }
+  pull_request: {}
+  push: {}
 
 jobs:
   build:
     name: Build and Run Tests
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
       - name: Build and Run Tests
-        run: # execute your tests generating test results
+        run: |
+          ./gradlew clean test     # ou 'mvn test', conforme sua stack
+
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v5
-        if: success() || failure() # always run even if the previous step fails
+        if: always()
         with:
           report_paths: '**/build/test-results/test/TEST-*.xml'

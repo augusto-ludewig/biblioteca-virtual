@@ -6,7 +6,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * Representa um livro com título, autor, gênero, ano de publicação e exemplares.
+ * Representa um livro com título, autor,
+ * gênero, ano de publicação e exemplares.
  */
 public final class Livro implements Comparable<Livro> {
 
@@ -222,6 +223,7 @@ public final class Livro implements Comparable<Livro> {
      *
      * @param biblioteca repositório para adicionar livros
      */
+    @SuppressWarnings("checkstyle:magicnumber")
     public void criarLivros(final Biblioteca biblioteca) {
         // Aventura
         biblioteca.adicionarLivro(
@@ -254,7 +256,8 @@ public final class Livro implements Comparable<Livro> {
         // Programação
         biblioteca.adicionarLivro(
                 new Livro(
-                        "Clean Code: A Handbook of Agile Software Craftsmanship",
+                        "Clean Code: A Handbook of " +
+                                "Agile Software Craftsmanship",
                         "Robert C. Martin",
                         "Programação",
                         2008,
@@ -309,7 +312,8 @@ public final class Livro implements Comparable<Livro> {
         );
         biblioteca.adicionarLivro(
                 new Livro(
-                        "O Andar do Bêbado: Como o Acaso Determina Nossas Vidas",
+                        "O Andar do Bêbado: Como o Acaso" +
+                                " Determina Nossas Vidas",
                         "Leonard Mlodinow",
                         "Ciência",
                         2008,

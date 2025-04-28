@@ -15,7 +15,8 @@ import java.util.Set;
 public final class GrafoCategoria {
 
     /**
-     * Estrutura do grafo: mapa de cada livro para seu conjunto de recomendações.
+     * Estrutura do grafo:
+     * mapa de cada livro para seu conjunto de recomendações.
      */
     private final Map<Livro, Set<Livro>> grafo;
 

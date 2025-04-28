@@ -106,8 +106,8 @@ public final class Program {
                   + exemplarEmprestado.getId());
         } else {
           sc = new Scanner(System.in);
-          System.out.print("Livro indisponível!" +
-                  "Deseja entrar na fila de espera? (s/n) ");
+          System.out.print("Livro indisponível!"
+                  + "Deseja entrar na fila de espera? (s/n) ");
           char input = sc.nextLine().charAt(0);
           if (input == 's') {
             filaEspera.add(livroSelecionado);
