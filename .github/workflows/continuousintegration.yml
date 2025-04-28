@@ -4,9 +4,9 @@ on:
   pull_request:
     branches:
       - main
-  push: {} # Dispara em todos os branches
+  push: { } # Dispara em todos os branches
 
-permissions: {}
+permissions: { }
 
 jobs:
   lint:
