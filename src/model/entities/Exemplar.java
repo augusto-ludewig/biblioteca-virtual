@@ -1,54 +1,96 @@
 package model.entities;
 
-import java.util.HashMap;
 import java.util.Locale;
 
-public class Exemplar {
-    private String id; // Identificador único (pode ser gerado automaticamente)
-    private Livro livro; // Referência ao livro original
+/**
+ * Representa um exemplar físico de um livro na biblioteca.
+ */
+public final class Exemplar {
+    /** Identificador único do exemplar. */
+    private String id;
+
+    /** Livro ao qual este exemplar pertence. */
+    private Livro livro;
+
+    /** Status atual do exemplar. */
     private Status status;
 
-    public Exemplar(Livro livro) {
-        this.livro = livro;
+    /**
+     * Constrói um exemplar associado a um livro específico.
+     *
+     * @param livroParam Livro ao qual o exemplar pertence
+     */
+    public Exemplar(final Livro livroParam) {
+        this.livro = livroParam;
         this.status = Status.DISPONIVEL;
-        this.id = gerarIdUnico(); // Implemente sua lógica de ID (ex: UUID)
+        this.id = gerarIdUnico();
     }
 
     private String gerarIdUnico() {
-        // Combinação do primeiro nome do livro + número sequencial
         String x = livro.getTitulo().toLowerCase(Locale.ROOT);
         int inicio = x.indexOf(0);
         int fim = x.indexOf(" ");
-        return x.substring(inicio + 1, fim) + livro.consultarExemplares().size() + 1;
+        return x.substring(inicio + 1, fim)
+                + livro.consultarExemplares().size() + 1;
     }
 
-    // Getters e setters
+    /**
+     * Retorna o status atual do exemplar.
+     *
+     * @return Status do exemplar
+     */
     public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    /**
+     * Define o status do exemplar.
+     *
+     * @param newStatus  novo status a ser setado no exemplar
+     */
+    public void setStatus(final Status newStatus) {
+        this.status = newStatus;
     }
 
+    /**
+     * Retorna o ID único do exemplar.
+     *
+     * @return ID do exemplar
+     */
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    /**
+     * Define o ID único do exemplar.
+     *
+     * @param newId Novo ID do exemplar
+     */
+    public void setId(final String newId) {
+        this.id = newId;
     }
 
+    /**
+     * Retorna o livro associado ao exemplar.
+     *
+     * @return Livro do exemplar
+     */
     public Livro getLivro() {
         return livro;
     }
 
-    public void setLivro(Livro livro) {
-        this.livro = livro;
+    /**
+     * Define o livro associado ao exemplar.
+     *
+     * @param livroParam Novo livro do exemplar
+     */
+    public void setLivro(final Livro livroParam) {
+        this.livro = livroParam;
     }
 
     @Override
     public String toString() {
-        return "ID: " + id + " - Status: " + status;
+        return "ID: " + id
+                + " - Status: " + status;
     }
 }

@@ -29,3 +29,6 @@ COPY --from=builder --chown=appuser:appuser /app/app.jar .
 EXPOSE 8080
 
 CMD ["sh", "-c", "java -cp app.jar ${MAIN_CLASS}"]
+
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+  CMD curl --fail http://localhost:8080/health || exit 1

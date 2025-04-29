@@ -1,11 +1,20 @@
 package application;
 
-import java.util.*;
-
-import model.entities.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
+import java.util.Set;
+import model.entities.Biblioteca;
+import model.entities.Exemplar;
+import model.entities.GrafoCategoria;
+import model.entities.Livro;
+import model.entities.Status;
 
 public final class Program {
-  private Program() {} // Construtor privado
+  private Program() { } // Construtor privado
 
   /**
    * Método principal de execução.
@@ -22,7 +31,6 @@ public final class Program {
     Biblioteca biblioteca = new Biblioteca();
     new Livro().criarLivros(biblioteca);
 
-    // Adicionar todos os livros da biblioteca ao grafo
     for (Livro livro : biblioteca.getListaDeLivros()) {
       grafo.adicionarNode(livro);
     }
@@ -30,7 +38,7 @@ public final class Program {
     System.out.println("Olá! Seja bem vindo(a) à sua Biblioteca Virtual!");
 
     char selecao = 0;
-    while (selecao != 'f'){
+    while (selecao != 'f') {
 
       System.out.println("\nSelecione a opção: ");
       System.out.println("a) Listar livros");
@@ -45,30 +53,27 @@ public final class Program {
       selecao = sc.nextLine().charAt(0);
       System.out.println();
 
-      if (selecao == 'a'){
+      if (selecao == 'a') {
         historicoNavegacao.push("Listar livros");
         biblioteca.listarLivros();
-      }
-
-      else if (selecao == 'b') {
+      } else if (selecao == 'b') {
         historicoNavegacao.push("Consultar livro");
         biblioteca.listarLivros();
 
         System.out.print("\nDigite o indice do livro desejado: ");
-        int indice = sc.nextInt()-1;
+        int indice = sc.nextInt() - 1;
 
         Livro livroSelecionado = biblioteca.consultarLivro(indice);
 
-        System.out.println("\n" + biblioteca.consultarLivro(indice).toStringDetalhado());
+        System.out.println("\n"
+                + biblioteca.consultarLivro(indice).toStringDetalhado());
         histricoConsultaLivros.add(livroSelecionado);
 
-        // Faz recomendações de livros com base no gênero literário do livro
         Set<Livro> recomendacoes = grafo.getRecomendacoes(livroSelecionado);
-        System.out.println("\nOutras recomendações para " + livroSelecionado.getTitulo() + ":");
+        System.out.println("\nOutras recomendações para "
+                + livroSelecionado.getTitulo() + ":");
         recomendacoes.forEach(l -> System.out.println(" ▸ " + l.getTitulo()));
-      }
-
-      else if (selecao == 'c') {
+      } else if (selecao == 'c') {
         historicoNavegacao.push("Adicionar um livro");
         System.out.print("Digite o nome do livro: ");
         String nomeLivro = sc.nextLine();
@@ -85,10 +90,9 @@ public final class Program {
         System.out.print("Digite a quantidade disponível em estoque: ");
         int quantidadeDeExemplares = sc.nextInt();
 
-        biblioteca.adicionarLivro(new Livro(nomeLivro, autorLivro, generoLiterario, anoPublicacao, quantidadeDeExemplares));
-      }
-
-      else if (selecao == 'd') {
+        biblioteca.adicionarLivro(new Livro(nomeLivro, autorLivro,
+                generoLiterario, anoPublicacao, quantidadeDeExemplares));
+      } else if (selecao == 'd') {
         historicoNavegacao.push("Emprestar um livro");
         biblioteca.listarLivros();
         System.out.print("Digite o índice do livro desejado: ");
@@ -98,19 +102,20 @@ public final class Program {
         Exemplar exemplarEmprestado = livroSelecionado.emprestarExemplar();
 
         if (exemplarEmprestado != null) {
-          System.out.println("Livro emprestado com sucesso! Exemplar ID: " + exemplarEmprestado.getId());
+          System.out.println("Livro emprestado com sucesso! Exemplar ID: "
+                  + exemplarEmprestado.getId());
         } else {
           sc = new Scanner(System.in);
-          System.out.print("Livro indisponível! Deseja entrar na fila de espera? (s/n) ");
+          System.out.print("Livro indisponível!"
+                  + "Deseja entrar na fila de espera? (s/n) ");
           char input = sc.nextLine().charAt(0);
-          if(input == 's'){
+          if (input == 's') {
             filaEspera.add(livroSelecionado);
-            System.out.println("Você está na posição " + filaEspera.size() + " da fila!");
+            System.out.println("Você está na posição "
+                    + filaEspera.size() + " da fila!");
           }
         }
-      }
-
-      else if (selecao == 'e') {
+      } else if (selecao == 'e') {
         List<Exemplar> emprestados = new ArrayList<>();
         for (Livro livro : biblioteca.getListaDeLivros()) {
           emprestados.addAll(livro.getExemplaresEmprestados());
@@ -119,7 +124,7 @@ public final class Program {
         if (!emprestados.isEmpty()) {
           System.out.println("Livros emprestados:");
           for (int i = 0; i < emprestados.size(); i++) {
-            System.out.println((i+1) + " - " + emprestados.get(i).getId());
+            System.out.println((i + 1) + " - " + emprestados.get(i).getId());
           }
 
           System.out.print("Digite o índice do exemplar para devolver: ");
@@ -131,29 +136,27 @@ public final class Program {
           System.out.println("Não há livros emprestados!");
         }
       }
-
     }
 
-    // Zerando a fila de espera - apenas simulação
     if (!filaEspera.isEmpty()) {
       System.out.println("\nNotificações da fila de espera:");
       while (!filaEspera.isEmpty()) {
         Livro livro = filaEspera.poll();
-        System.out.println("O livro " + livro.getTitulo() + " está disponível!");
+        System.out.println("O livro " + livro.getTitulo()
+                + " está disponível!");
       }
     }
 
-      System.out.println("\nNavegação do usuário: ");
-      for (int i=0; i < historicoNavegacao.size(); i++){
-        System.out.print(historicoNavegacao.pop() + "\\");
-      }
+    System.out.println("\nNavegação do usuário: ");
+    for (int i = 0; i < historicoNavegacao.size(); i++) {
+      System.out.print(historicoNavegacao.pop() + "\\");
+    }
 
-      System.out.println("\nLivros consultados: ");
-      for (Livro l : histricoConsultaLivros){
-        System.out.println("- " + l.toString());
-      }
+    System.out.println("\nLivros consultados: ");
+    for (Livro livro : histricoConsultaLivros) {
+      System.out.println("- " + livro.toString());
+    }
 
-      sc.close();
-
+    sc.close();
   }
 }

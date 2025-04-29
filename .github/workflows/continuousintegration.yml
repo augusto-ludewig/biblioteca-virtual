@@ -1,42 +1,32 @@
-name: Continuous Integration - Super-Linter and Discord
+name: Continuous-Integration
 
 on:
   pull_request:
     branches:
       - main
-  push: {} # Dispara em todos os branches
+  push: {} #faz em todos os repositórios
 
 permissions: {}
 
 jobs:
-  lint:
-    name: Java-Lint
+  build:
+    name: Lint
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: read
       statuses: write
     env:
-      VALIDATE_JAVA: true
+      VALIDATE_JAVA_GOOGLE_FORMAT: false  # Google Java Format desativado
+      VALIDATE_JAVA: true  # Mantém outros linters de Java
+      JAVA_CHECKSTYLE_CONFIG_FILE: checkstyle.xml
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Histórico completo para o Super-Linter
 
       - name: Super-linter
         uses: super-linter/super-linter@v5
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-  discord:
-    name: Discord Notification
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Run Discord Webhook
-        uses: johnnyhuy/actions-discord-git-webhook@v1.0.0
-        with:
-          webhook_url: ${{ secrets.discord_webhook }}
