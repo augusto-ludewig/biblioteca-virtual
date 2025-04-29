@@ -1,14 +1,10 @@
 package test.model.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 /**
  * Test cases for Livro class.
@@ -46,8 +42,10 @@ class LivroTest {
     @Test
     void testCompareTo() {
         final int testYear = 2020;
-        Livro livroA = new Livro("Aprendendo Java", "...", "...", testYear, 1);
-        Livro livroB = new Livro("ZooKeeper Essentials", "...", "...", testYear, 1);
+        Livro livroA = new Livro(
+                "Aprendendo Java", "...", "...", testYear, 1);
+        Livro livroB = new Livro(
+                "ZooKeeper Essentials", "...", "...", testYear, 1);
         assertTrue(livroA.compareTo(livroB) < 0);
     }
 

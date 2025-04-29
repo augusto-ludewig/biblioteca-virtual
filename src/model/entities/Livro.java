@@ -256,8 +256,8 @@ public final class Livro implements Comparable<Livro> {
         // Programação
         biblioteca.adicionarLivro(
                 new Livro(
-                        "Clean Code: A Handbook of " +
-                                "Agile Software Craftsmanship",
+                        "Clean Code: A Handbook of "
+                                + "Agile Software Craftsmanship",
                         "Robert C. Martin",
                         "Programação",
                         2008,
@@ -312,8 +312,8 @@ public final class Livro implements Comparable<Livro> {
         );
         biblioteca.adicionarLivro(
                 new Livro(
-                        "O Andar do Bêbado: Como o Acaso" +
-                                " Determina Nossas Vidas",
+                        "O Andar do Bêbado: Como o Acaso"
+                                + " Determina Nossas Vidas",
                         "Leonard Mlodinow",
                         "Ciência",
                         2008,
